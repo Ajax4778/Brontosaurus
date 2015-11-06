@@ -1,18 +1,21 @@
 var Board = React.createClass({
   getInitialState: function() {
-    return { grid: LetterStore.getGrid() };
+    return { grid: [], selected: [] };
   },
 
   componentDidMount: function() {
-    LetterStore.addChangeListener(this._onChangeEvent)
+    TileStore.addChangeListener(this._onChangeEvent);
+    AppDispatcher.dispatch(actionType: WordConstants.NEW_GAME);
   },
 
   _onChangeEvent: function() {
-    this.setState({ grid: LetterStore.getGrid() })
+    this.setState({ grid: TileStore.currentTiles() })
   },
 
   _buildTiles: function() {
-
+    var tiles = this.state.grid.map(function(tile) {
+      <div className='tile'>{tile.value}</div>
+    });
   },
 
   render: function() {
