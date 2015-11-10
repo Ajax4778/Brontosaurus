@@ -1,10 +1,13 @@
 var Board = React.createClass({
-  EMPTY_BOARD: [],
-
-  _grid: EMPTY_BOARD,
+  _grid: [],
 
   getInitialState: function() {
     return { grid: _grid, selected: [] };
+  },
+
+  componentDidMount: function() {
+    _grid = TileStore.startNewGame();
+    this.onChangeEvent();
   },
 
   onChangeEvent: function() {
@@ -36,16 +39,18 @@ var Board = React.createClass({
   },
 
   buildTiles: function() {
+    var id = 0;
     var tiles = this.state.grid.map(function(tile) {
-      <div className='tile'>{tile.value}</div>
+      id += 1;
+      return <div className='tile' key={id}>{tile}</div>;
     });
     return tiles;
   },
 
   handleKeyDown: function(e) {
     e.preventDefault();
-    var dir = e.keyInput; ////////
-    this.makeMove(dir);
+    // var dir = e.keyInput; ////////
+    // this.makeMove(dir);
   },
 
   render: function() {
