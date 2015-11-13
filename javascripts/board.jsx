@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Board = React.createClass({
   _grid: [],
 
@@ -62,3 +64,5 @@ var Board = React.createClass({
     );
   }
 })
+
+module.exports = Board;

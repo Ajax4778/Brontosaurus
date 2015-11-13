@@ -1,15 +1,17 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Board = require('./javascripts/board.jsx');
+
 var Game = React.createClass({
   render: function() {
     return (
       <div>
+        <Board/>
       </div>
     );
   }
 });
 
-
-window.mountApp = function() {
-  React.render(<Game/>,
+ReactDOM.render(<div><Game/></div>,
     document.getElementById('bronto-container')
-  );
-};
+);

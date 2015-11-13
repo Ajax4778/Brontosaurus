@@ -2,10 +2,12 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "bronto.jsx",
+  entry: "./bronto.jsx",
   output: {
     path: path.join(__dirname, 'javascripts'),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    devtoolModuleFilenameTemplate: '[resourcePath]',
+    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
   module: {
     loaders: [
@@ -15,5 +17,9 @@ module.exports = {
         loader: 'babel'
       }
     ]
-  }
+  },
+  devtool: 'source-maps',
+    resolve: {
+      extensions: ["", ".js", ".jsx"]
+    }
 };
