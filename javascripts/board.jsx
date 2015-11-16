@@ -49,8 +49,10 @@ var Board = React.createClass({
     return tiles;
   },
 
-  handleKeyDown: function(e) {
+  handleClick: function(e) {
     e.preventDefault();
+    this._grid = this._grid.concat(TileStore.addTiles());
+    this.onChangeEvent();
     // var dir = e.keyInput; ////////
     // this.makeMove(dir);
   },
@@ -58,7 +60,7 @@ var Board = React.createClass({
   render: function() {
     var tiles = this.buildTiles();
     return (
-      <ul onKeyDown={this.handleKeyDown} className='gameBoard'>
+      <ul onClick={this.handleClick} className='gameBoard'>
         {tiles}
       </ul>
     );

@@ -6,7 +6,6 @@ var Game = React.createClass({
   render: function() {
     return (
       <div>
-        this is me
         <Board/>
       </div>
     );
