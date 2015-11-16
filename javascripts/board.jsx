@@ -4,16 +4,16 @@ var Board = React.createClass({
   _grid: [],
 
   getInitialState: function() {
-    return { grid: _grid, selected: [] };
+    return { grid: this._grid, selected: [] };
   },
 
   componentDidMount: function() {
-    _grid = TileStore.startNewGame();
+    this._grid = window.TileStore.startNewGame();
     this.onChangeEvent();
   },
 
   onChangeEvent: function() {
-    this.setState({ grid: _grid });
+    this.setState({ grid: this._grid });
   },
 
   makeMove: function(dir) {
@@ -36,7 +36,7 @@ var Board = React.createClass({
         // set newGrid
         break;
     }
-    _grid = newGrid;
+    this._grid = newGrid;
     this.onChangeEvent();
   },
 

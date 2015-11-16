@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1); //where is this if not in gemfile
+	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
 	var Board = __webpack_require__(159);
 	
@@ -52,13 +52,20 @@
 	  displayName: 'Game',
 	
 	  render: function () {
-	    return React.createElement(Board, null);
+	    return React.createElement(
+	      'div',
+	      null,
+	      'this is me',
+	      React.createElement(Board, null)
+	    );
 	  }
 	});
 	
-	window.mountApp = function () {
-	  ReactDOM.render(React.createElement(Game, null), document.getElementById('bronto-container'));
-	};
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(Game, null)
+	), document.getElementById('bronto-container'));
 
 /***/ },
 /* 1 */
@@ -19656,16 +19663,16 @@
 	  _grid: [],
 	
 	  getInitialState: function () {
-	    return { grid: _grid, selected: [] };
+	    return { grid: this._grid, selected: [] };
 	  },
 	
 	  componentDidMount: function () {
-	    _grid = TileStore.startNewGame();
+	    this._grid = window.TileStore.startNewGame();
 	    this.onChangeEvent();
 	  },
 	
 	  onChangeEvent: function () {
-	    this.setState({ grid: _grid });
+	    this.setState({ grid: this._grid });
 	  },
 	
 	  makeMove: function (dir) {
@@ -19688,7 +19695,7 @@
 	        // set newGrid
 	        break;
 	    }
-	    _grid = newGrid;
+	    this._grid = newGrid;
 	    this.onChangeEvent();
 	  },
 	
@@ -19720,6 +19727,8 @@
 	    );
 	  }
 	});
+	
+	module.exports = Board;
 
 /***/ }
 /******/ ]);

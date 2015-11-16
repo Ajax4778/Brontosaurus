@@ -35,7 +35,7 @@
     "f", "f", "g", "g", "g", "h", "h",
     "i", "i", "i", "i", "i", "i", "i", "i", "i", "j", "k",
     "l", "l", "l", "l", "m", "m", "n", "n", "n", "n", "n", "n",
-    "o", "o", "o", "o", "o", "o", "o", "o", "p", "p", "q",
+    "o", "o", "o", "o", "o", "o", "o", "o", "p", "p", "qu",
     "r", "r", "r", "r", "r", "r", "s", "s", "s", "s",
     "t", "t", "t", "t", "t", "t", "u", "u", "u", "u", "v", "v",
     "w", "w", "x", "y", "y", "z"
@@ -45,13 +45,14 @@
     var newTiles = [];
     var rand;
     for (var i = 0; i < n; i++) {
-      rand = parseInt(Math.random * _allTiles.length)
+      rand = parseInt(Math.random() * _allTiles.length)
+      console.log(rand);
       newTiles.push(_allTiles.splice(rand, 1));
     }
     return newTiles;
   };
 
-  root.TileStore = function() {
+  root.TileStore = {
     startNewGame: function() {
       return _getTiles(12);
     },
