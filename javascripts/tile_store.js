@@ -45,6 +45,9 @@
     var newTiles = [];
     var rand;
     for (var i = 0; i < n; i++) {
+      if (_allTiles.length === 0) {
+        return newTiles;
+      }
       rand = parseInt(Math.random() * _allTiles.length)
       newTiles.push(_allTiles.splice(rand, 1));
     }

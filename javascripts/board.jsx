@@ -52,7 +52,8 @@ var Board = React.createClass({
 
   handleClick: function(e) {
     e.preventDefault();
-    this._grid = this._grid.concat(TileStore.addTiles());
+    var newTiles = TileStore.addTiles()
+    this._grid = this._grid.concat(newTiles);
     this.onChangeEvent();
     // var dir = e.keyInput; ////////
     // this.makeMove(dir);
