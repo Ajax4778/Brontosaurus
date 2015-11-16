@@ -45,7 +45,7 @@ var Board = React.createClass({
     var id = 0;
     var tiles = this.state.grid.map(function(letter) {
       id += 1;
-      return <Tile className='tile' key={id} letter={letter}/>;
+      return <Tile key={id} letter={letter}/>;
     });
     return tiles;
   },
@@ -61,7 +61,7 @@ var Board = React.createClass({
   render: function() {
     var tiles = this.buildTiles();
     return (
-      <ul onClick={this.handleClick} className='gameBoard'>
+      <ul onClick={this.handleClick} className='board container'>
         {tiles}
       </ul>
     );

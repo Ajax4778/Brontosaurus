@@ -3,7 +3,7 @@ var React = require('react');
 var Tile = React.createClass({
   render: function() {
     return (
-      <div>{this.props.letter}</div>
+      <div className='tile'>{this.props.letter}</div>
     );
   }
 });

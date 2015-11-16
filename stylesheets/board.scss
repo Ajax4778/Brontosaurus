@@ -1,0 +1,17 @@
+.board {
+  background: gold;
+  max-width: 200px;
+  list-style: none;
+}
+
+.tile {
+  width: 38px;
+  border: black solid 1px;
+  float: left;
+}
+
+.container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
