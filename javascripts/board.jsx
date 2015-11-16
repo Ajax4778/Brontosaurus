@@ -1,4 +1,5 @@
 var React = require('react');
+var Tile = require('./tile.jsx');
 
 var Board = React.createClass({
   _grid: [],
@@ -42,9 +43,9 @@ var Board = React.createClass({
 
   buildTiles: function() {
     var id = 0;
-    var tiles = this.state.grid.map(function(tile) {
+    var tiles = this.state.grid.map(function(letter) {
       id += 1;
-      return <div className='tile' key={id}>{tile}</div>;
+      return <Tile className='tile' key={id} letter={letter}/>;
     });
     return tiles;
   },
