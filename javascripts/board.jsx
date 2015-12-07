@@ -9,8 +9,13 @@ var Board = React.createClass({
   },
 
   componentDidMount: function() {
+    document.addEventListener('keypress', this.handleKeyPress);
     this._grid = window.TileStore.startNewGame();
     this.onChangeEvent();
+  },
+
+  componentWillUnmount: function() {
+    document.removeEventListener('keypress', this.handleKeyPress);
   },
 
   onChangeEvent: function() {
@@ -50,8 +55,9 @@ var Board = React.createClass({
     return tiles;
   },
 
-  handleClick: function(e) {
+  handleKeyPress: function(e) {
     e.preventDefault();
+    console.log(e.keyCode);
     var newTiles = TileStore.addTiles()
     this._grid = this._grid.concat(newTiles);
     this.onChangeEvent();
@@ -62,7 +68,7 @@ var Board = React.createClass({
   render: function() {
     var tiles = this.buildTiles();
     return (
-      <ul onClick={this.handleClick} className='board container'>
+      <ul className='board container'>
         {tiles}
       </ul>
     );
