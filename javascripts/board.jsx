@@ -52,14 +52,19 @@ var Board = React.createClass({
       id += 1;
       return <Tile key={id} letter={letter}/>;
     });
+    while (tiles.length < 25) {
+      id += 1;
+      tiles.push(<Tile key={id} letter='0'/>);
+    }
     return tiles;
   },
 
   handleKeyPress: function(e) {
     e.preventDefault();
     console.log(e.keyCode);
-    var newTiles = TileStore.addTiles()
+    var newTiles = TileStore.addTiles();
     this._grid = this._grid.concat(newTiles);
+    this._grid.splice(25);
     this.onChangeEvent();
     // var dir = e.keyInput; ////////
     // this.makeMove(dir);
@@ -73,6 +78,6 @@ var Board = React.createClass({
       </ul>
     );
   }
-})
+});
 
 module.exports = Board;
