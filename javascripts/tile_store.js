@@ -26,7 +26,7 @@
     x: {freq: 1, points: 8},
     y: {freq: 2, points: 4},
     z: {freq: 1, points: 10}
-  }
+  };
 
   var _allTiles = [
     "a", "a", "a", "a", "a", "a", "a", "a", "a",
@@ -39,7 +39,7 @@
     "r", "r", "r", "r", "r", "r", "s", "s", "s", "s",
     "t", "t", "t", "t", "t", "t", "u", "u", "u", "u", "v", "v",
     "w", "w", "x", "y", "y", "z"
-  ]
+  ];
 
   var _getTiles = function(n) {
     var newTiles = [];
@@ -48,23 +48,19 @@
       if (_allTiles.length === 0) {
         return newTiles;
       }
-      rand = parseInt(Math.random() * _allTiles.length)
+      rand = parseInt(Math.random() * _allTiles.length);
       newTiles.push(_allTiles.splice(rand, 1));
     }
     return newTiles;
   };
 
   root.TileStore = {
-    startNewGame: function() {
-      return _getTiles(12);
-    },
-
-    addTiles: function() {
-      return _getTiles(4);
+    getTiles: function(numTiles) {
+      return _getTiles(numTiles);
     },
 
     returnTiles: function(tiles) {
       _allTiles = _allTiles.concat(tiles).sort();
     }
-  }
+  };
 }(this));
